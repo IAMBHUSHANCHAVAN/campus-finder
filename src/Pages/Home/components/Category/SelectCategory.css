@@ -1,0 +1,76 @@
+.selectcategory {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: SFProDispaly;
+  font-weight: 400;
+  margin: 7.5rem 0 0 0;
+  width: 60%;
+}
+
+.selectcategory div {
+  align-self: center;
+}
+
+.selectcategory-main {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 2rem;
+  width: 59.365rem;
+  height: 12.75rem;
+  flex-shrink: 0;
+}
+.selectcategory-heading {
+  color: #000;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.card__logo img {
+  width: 4.0625rem;
+  height: 4.0625rem;
+  flex-shrink: 0;
+  margin-top: 0.3rem;
+}
+.card {
+  width: 12.625rem;
+  height: 12.75rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 0.9375rem;
+  border: 2px solid #000;
+  background: #fff;
+}
+.card__course {
+  color: #444;
+  text-align: center;
+  font-size: 0.875rem;
+  font-style: normal;
+  line-height: normal;
+  margin-top: 0.7rem;
+}
+.btn {
+  width: 10rem;
+  height: 2.625rem;
+  flex-shrink: 0;
+  margin-top: 2rem;
+  border-radius: 0.3125rem;
+  border: 1px solid #000;
+  background: #ffd700;
+  transition: box-shadow 0.3s;
+}
+.btn:hover {
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+}
+
+@media only screen and (max-width: 940px) {
+  .selectcategory-main {
+    flex-direction: column;
+    height: 120vh;
+    width: 100%;
+    align-items: center;
+  }
+}
