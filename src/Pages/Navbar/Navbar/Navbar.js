@@ -1,8 +1,8 @@
-import { Fragment } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 const navigation = [
   { name: "Home", href: "/", current: false },
   { name: "School", href: "/school", current: false },
@@ -13,8 +13,53 @@ const navigation = [
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-
 function Navbar() {
+  const [userDetails, setUserDetails] = useState({});
+  const host = "http://localhost:4080";
+
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      try {
+        const token = Cookies.get("token");
+        console.log(token);
+        if (!token) {
+          console.log("No token found");
+          return;
+        }
+        const response = await fetch(`${host}/api/users/getUserDetails`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            token: token,
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log("data", data);
+          setUserDetails(data.data);
+        } else {
+          console.log("Error fetching user details");
+        }
+      } catch (error) {
+        console.error("Error fetching user details:", error);
+      }
+    };
+
+    if (!userDetails || !userDetails.name) {
+      fetchUserDetails();
+    }
+  }, []);
+
+  let Navigate = useNavigate();
+  const handleSignOut = () => {
+    Cookies.remove("token");
+    setUserDetails({});
+    Navigate("/login");
+  };
+  const avatarURL = userDetails?.avatar;
+  // console.log(avatarURL);
+
   return (
     <Disclosure as="nav" style={{ backgroundColor: "#0F0C2D" }}>
       {({ open }) => (
@@ -34,7 +79,13 @@ function Navbar() {
               </div>
               <div className="flex flex-1 sm: md:justify-between items-center justify-center sm:items-stretch">
                 <div className="flex flex-shrink-0 items-center">
-                  <img
+                  <Link to={"/"}>
+                    {" "}
+                    <h1 style={{ color: "#FFF", fontSize: "1.5rem" }}>
+                      Campus-Finder
+                    </h1>
+                  </Link>
+                  {/* <img
                     className="block h-8 w-auto lg:hidden"
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                     alt="Your Company"
@@ -43,7 +94,7 @@ function Navbar() {
                     className="hidden h-8 w-auto lg:block"
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                     alt="Your Company"
-                  />
+                  /> */}
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div
@@ -83,8 +134,8 @@ function Navbar() {
                         <span className="sr-only">Open user menu</span>
                         <img
                           className="h-8 w-8 rounded-full"
-                          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                          alt=""
+                          src={avatarURL}
+                          alt="avater"
                         />
                       </Menu.Button>
                     </div>
@@ -126,15 +177,15 @@ function Navbar() {
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                            <Link
-                              to="/"
+                            <button
+                              onClick={handleSignOut}
                               className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
+                                "w-full text-left px-4 py-2 text-sm text-gray-700",
+                                active ? "bg-gray-100" : ""
                               )}
                             >
                               Sign out
-                            </Link>
+                            </button>
                           )}
                         </Menu.Item>
                       </Menu.Items>

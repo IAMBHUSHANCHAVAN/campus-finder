@@ -5,406 +5,26 @@ import Location from "./collegeImages/location.svg";
 import Dot from "./collegeImages/dot.svg";
 import Search from "./collegeImages/search.svg";
 
+import usePageTitle from "../layout/metaData";
+import { Link } from "react-router-dom";
+// import colleges from "./college_api";
+
+// export default function College() {
+//   const colleges = useCollegeContext();
+
+// const [selectedLocation, setSelectedLocation] = useState("");
+
 export default function College() {
-  let colleges = [
-    {
-      Name: "Viva Institute of Technology",
-      Location: "palghar, Maharashtra",
-      Ownership: "Private",
-      "University or Autonomous": "Affiliated with the University of Mumbai",
-      "About College":
-        "Viva Institute of Technology is a private engineering college located in Mumbai, Maharashtra, India. It is affiliated with the University of Mumbai.",
-      Exams: ["MHT CET", "JEE Main"],
-      "Course Offered": [
-        "75000",
-        "Course: ME, Fees: 85000",
-        "Course: MCA, Fees: 95000",
-      ],
-      Specializations: [
-        "Computer",
-        "Mechanical",
-        "Electrical",
-        "Electronics",
-        "IT",
-      ],
-      Salary: "12.00 Lakh",
-      "College Address":
-        "Shirgaon, Post: Ghodbunder Road, Virar (W), Palghar, Maharashtra - 401303, India",
-      Phone: "+91-250-2480052",
-      Email: "admissions@viva-technology.org",
-      "College Link": "https://www.viva-technology.org/",
-      "Student Review": {
-        Overall: 4.0,
-        Placement: 4.1,
-        Infrastructure: 3.8,
-        Date: "2023-07-11",
-      },
-      Rating: 4.0,
-    },
-    {
-      Name: "Theem College of Engineering",
-      Location: "palghar, Maharashtra",
-      Ownership: "Public",
-      "University or Autonomous": "Affiliated with the University of Mumbai",
-      "About College":
-        "Theem College of Engineering is a Government engineering college located in palghar, Maharashtra, India. It is affiliated with the University of Mumbai.",
-      Exams: ["MHT CET", "JEE Main"],
-      "Course Offered": [
-        "64,000",
-        "Course: ME, Fees: 60,000",
-        "Course: MCA, Fees: 10000",
-      ],
-      Specialization: [
-        "Computer",
-        "Mechanical",
-        "Electrical",
-        "Electronics",
-        "IT",
-      ],
-      Salary: "12.00 Lakh",
-      "College Address":
-        "Village Betegaon, Chilhar Road, Boisar (E), Palghar - 401501",
-      Phone: "0252) 284909, 284926",
-      Email: "admissions@stfrancisengineering.ac.in",
-      "College Link": "http://theemcoe.org",
-      "Student Review": {
-        Overall: 4.0,
-        Placement: 3.5,
-        Infrastructure: 4.0,
-        Date: "2023-07-11",
-      },
-      Rating: 3.8,
-    },
-    {
-      Name: "St. John College of Engineering and Management",
-      Location: "palghar, Maharashtra",
-      Ownership: "Private",
-      "University or Autonomous": "Affiliated with the University of palghar",
-      "About College":
-        "St. John College of Engineering and Management is a private engineering college located in Mumbai, Maharashtra, India. It is affiliated with the University of Mumbai.",
-      Exams: ["MHT CET", "JEE Main"],
-      "Course Offered": [
-        "94,000",
-        "Course: MMS, Fees: 160,000",
-        "Course: Polytechnic, Fees: 65,000",
-      ],
-      Specializations: [
-        "Computer",
-        "Mechanical",
-        "Electrical",
-        "Electronics",
-        "IT",
-      ],
-      Salary: "12.00 Lakh",
-      "College Address":
-        " Village Betegaon, Chilhar Road, Boisar (E), Palghar - 401501",
-      Phone: "0252) 284909, 284926",
-      Email: "admissions@stfrancisengineering.ac.in",
-      "College Link": "https://www.sjcem.edu.in/",
-      "Student Review": {
-        Overall: 4.0,
-        Placement: 3.5,
-        Infrastructure: 4.0,
-        Date: "2023-07-11",
-      },
-      Rating: 3.8,
-    },
-    {
-      Name: "Sardar Patel Institute of Technology (SPIT)",
-      location: "Mumbai, Maharashtra",
-      Ownership: "Private",
-      "university or Autonomous": "Affiliated with the University of Mumbai",
-      "About College":
-        "SPIT is a private engineering college located in Mumbai, Maharashtra, India. It is affiliated with the University of Mumbai.",
-      Exams: ["MHT CET", "JEE Main"],
-      "Course Offered": [
-        "70000",
-        "Course: ME, Fees: 80000",
-        "Course: MCA, Fees: 90000",
-      ],
-      Specialization: ["computer, mechnical, electrical", "electronics", "IT"],
-      Salary: "12.00 Lakh",
-      "College Address":
-        "Bhavan's Campus, Munshi Nagar, Andheri West, Mumbai - 400058, Maharashtra, India",
-      Phone: "+91-22-2670-0862",
-      Email: "admissions@spit.ac.in",
-      "College Link": "https://www.spit.ac.in/",
-      "Student review": {
-        Overall: 4.1,
-        Placement: 4.3,
-        Infrastructure: 4,
-        date: "2023-07-11",
-      },
-      rating: 4.2,
-    },
-    {
-      Name: "Vartak College of Engineering",
-      Location: "palghar, Maharashtra",
-      Ownership: "Private",
-      "University or Autonomous": "Affiliated with the University of Mumbai",
-      "About College":
-        "Vartak College of Engineering is a private engineering college located in Mumbai, Maharashtra, India. It is affiliated with the University of Mumbai.",
-      Exams: ["MHT CET", "JEE Main"],
-      "Course Offered": ["121,934", "Course: ME, Fees: 100100"],
-      Specialization: ["computer, mechnical, electrical", "electronics", "IT"],
-      Salary: "12.00 Lakh",
-      "College Address":
-        "BK.T. Marg, Vartak College Campus, Vasai Road (W) Palghar - 401202",
-      Phone: "0250-2338234, 0250 233 8234",
-      Email: "admissions@spit.ac.in",
-      "College Link": "https://vcet.edu.in/",
-      "Student review": {
-        Overall: 4.1,
-        Placement: 4.3,
-        Infrastructure: 4,
-        date: "2023-07-11",
-      },
-      rating: 4.2,
-    },
-    {
-      Name: "Atharva College of Engineering",
-      Location: "Mumbai, Maharashtra",
-      Ownership: "Private",
-      "University or Autonomous": "Affiliated with the University of Mumbai",
-      "About College":
-        "Atharva College of Engineering is a private engineering college located in Mumbai, Maharashtra, India. It is affiliated with the University of Mumbai.",
-      Exams: ["MHT CET", "JEE Main"],
-      "Course Offered": [
-        "133926",
-        "Course: ME, Fees: 112889",
-        "Course: MCA, Fees: 90000",
-      ],
-      Specialization: [
-        "Computer",
-        "Mechanical",
-        "Electrical",
-        "Electronics",
-        "IT",
-      ],
-      Salary: "12.00 Lakh",
-      "College Address":
-        "Bhavan's Campus, Munshi Nagar, Andheri West, Mumbai - 400058, Maharashtra, India",
-      Phone: "+91-22-2670-0862",
-      Email: "admissions@atharvaengg.org",
-      "College Link": "https://www.atharvaengg.org/",
-      "Student Review": {
-        Overall: 4.1,
-        Placement: 4.3,
-        Infrastructure: 4,
-        Date: "2023-07-11",
-      },
-      Rating: 4.2,
-    },
-    {
-      Name: "Thakur College of Engineering",
-      Location: "Mumbai, Maharashtra",
-      Ownership: "Private",
-      "University or Autonomous": "Affiliated with the University of Mumbai",
-      "About College":
-        "Thakur College of Engineering is a private engineering college located in Mumbai, Maharashtra, India. It is affiliated with the University of Mumbai.",
-      Exams: ["MHT CET", "JEE Main"],
-      "Course Offered": [
-        "158,000 ",
-        "Course: ME, Fees: 178,000",
-        "Course: MCA, Fees: 158,000",
-      ],
-      Specialization: [
-        "Computer",
-        "Mechanical",
-        "Electrical",
-        "Electronics",
-        "IT",
-      ],
-      Salary: "12.00 Lakh",
-      "College Address":
-        "A-Block, Thakur Educational Campus, Shyamnarayan Marg, Thakur Village, Kandivali(East) Mumbai - 400101",
-      Phone: "022-67308000",
-      Email: "admissions@thakurengineering.ac.in",
-      "College Link": "https://www.tcetmumbai.in/",
-      "Student Review": {
-        Overall: 4.3,
-        Placement: 4.4,
-        Infrastructure: 4.1,
-        Date: "2023-07-11",
-      },
-      Rating: 4.3,
-    },
-    {
-      Name: "St. Francis College of Engineering",
-      Location: "Mumbai, Maharashtra",
-      Ownership: "Private",
-      "University or Autonomous": "Affiliated with the University of Mumbai",
-      "About College":
-        "St. Francis College of Engineering is a private engineering college located in Mumbai, Maharashtra, India. It is affiliated with the University of Mumbai.",
-      Exams: ["MHT CET", "JEE Main"],
-      "Course Offered": [
-        "132,500",
-        "Course: ME, Fees:  100,000",
-        "Course: MCA, Fees:  100,000",
-      ],
-      Specialization: [
-        "Computer",
-        "Mechanical",
-        "Electrical",
-        "Electronics",
-        "IT",
-      ],
-      Salary: "12.00 Lakh",
-      "College Address":
-        "Mount Poinsur, S.V.P. Road, Borivali (West) Mumbai - 400103",
-      Phone: "022-28928585",
-      Email: "admissions@stfrancisengineering.ac.in",
-      "College Link": "https://www.sfit.ac.in/",
-      "Student Review": {
-        Overall: 4.3,
-        Placement: 4.0,
-        Infrastructure: 4.1,
-        Date: "2023-07-11",
-      },
-      Rating: 4.1,
-    },
-    {
-      Name: "Rizvi College of Engineering",
-      Location: "Mumbai, Maharashtra",
-      Ownership: "Private",
-      "University or Autonomous": "Affiliated with the University of Mumbai",
-      "About College":
-        "Rizvi College of Engineering is a private engineering college located in Mumbai, Maharashtra, India. It is affiliated with the University of Mumbai.",
-      Exams: ["MHT CET", "JEE Main"],
-      "Course Offered": [
-        "90,000",
-        "Course: ME, Fees: Varies",
-        "Course: MCA, Fees: Varies",
-      ],
-      Specialization: [
-        "Computer",
-        "Mechanical",
-        "Electrical",
-        "Electronics",
-        "IT",
-      ],
-      Salary: "12.00 Lakh",
-      "College Address":
-        "Rizvi Educational Complex, Off Carter Road, Bandra (West), Mumbai - 400050",
-      Phone: "022-26052072",
-      Email: "admissions@rizvicollege.edu.in",
-      "College Link": "http://eng.rizvi.edu.in/",
-
-      "Student Review": {
-        Overall: 4.5,
-        Placement: 4.2,
-        Infrastructure: 4.3,
-        Date: "2023-07-11",
-      },
-      Rating: 4.2,
-    },
-    {
-      Name: "Bharati Vidyapeeth Deemed University",
-      Location: "Pune, Maharashtra",
-      Ownership: "Public",
-      "University or Autonomous": "Autonomous",
-      "About College":
-        "Bharati Vidyapeeth Deemed University is a prestigious educational institution located in Pune, Maharashtra, India. It is a deemed university recognized by the University Grants Commission (UGC) and offers a wide range of undergraduate and postgraduate programs in various disciplines.",
-      Exams: ["BVP CET", "NEET", "MHT CET", "JEE Main", "NATA"],
-      "Course Offered": [
-        "158000",
-        "Course: MCA, Fees: 135,000",
-        "Course: M.Tech, Fees: 158,000",
-      ],
-      Specialization: [
-        "Engineering",
-        "Medical",
-        "Management",
-        "Computer Applications",
-        "Law",
-        "Pharmacy",
-      ],
-      Salary: "12.00 Lakh",
-      "College Address":
-        "Bharati Vidyapeeth Bhavan, Lal Bahadur Shastri Marg, Pune - 411030, Maharashtra, India",
-      Phone: "+91-20-24407100",
-      Email: "admissions@bharatividyapeeth.edu",
-      "College Link": "https://www.bvuniversity.edu.in/",
-      "Student Review": {
-        Overall: 4.5,
-        Placement: 4.2,
-        Infrastructure: 4.3,
-        Date: "2023-07-11",
-      },
-      Rating: 4.0,
-    },
-    {
-      Name: "DY Patil International University",
-      Location: "Pune, Maharashtra",
-      Ownership: "Private",
-      "University or Autonomous": "Deemed University",
-      "About College":
-        "DY Patil International University is a renowned private deemed university located in Pune, Maharashtra, India. The university offers a diverse range of undergraduate, postgraduate, and doctoral programs across various fields of study.",
-      Exams: ["DYP CET", "NEET", "MHT CET", "JEE Main", "NATA"],
-      "Course Offered": [
-        "215,000",
-        "Course: BBA, Fees: 135,000",
-        "Course: M.Tech, Fees: 135,000",
-      ],
-      Specialization: [
-        "Engineering",
-        "Medical",
-        "Management",
-        "Computer Applications",
-        "Law",
-        "Pharmacy",
-      ],
-      Salary: "12.00 Lakh",
-      "College Address": "Sector 29, Nigdi Pradhikaran, Akurdi Pune - 411044",
-      Phone: "9071123434, 9071123404",
-      Email: "admissions@bharatividyapeeth.edu",
-      "College Link": "https://www.dypiu.ac.in/",
-      "Student Review": {
-        Overall: 4.5,
-        Placement: 4.2,
-        Infrastructure: 4.3,
-        Date: "2023-07-11",
-      },
-      Rating: 4.4,
-    },
-
-    {
-      Name: "Rajgad Dnyanpeeth Technical Campus",
-      Location: "Pune, Maharashtra",
-      Ownership: "Private",
-      "University or Autonomous":
-        "Affiliated with the Savitribai Phule Pune University",
-      "About College":
-        "Rajgad Dnyanpeeth Technical Campus is a private technical campus located in Pune, Maharashtra, India. It is affiliated with the Savitribai Phule Pune University.",
-      Exams: ["MHT CET", "JEE Main"],
-      "Course Offered": [
-        "80000",
-        "Course: ME, Fees: 90000",
-        "Course: MBA, Fees: 100000",
-      ],
-      Specialization: [
-        "Computer",
-        "Mechanical",
-        "Electrical",
-        "Electronics",
-        "Civil",
-      ],
-      "College Address":
-        "Rajgad Dnyanpeeth Campus, Velhe, Pune - 412205, Maharashtra, India",
-      Phone: "+91-20-2447-1122",
-      Email: "info@rajgad.edu.in",
-      "College Link": "https://www.rajgad.edu.in/",
-      "Student Review": {
-        Overall: 4.2,
-        Placement: 4.1,
-        Infrastructure: 4.3,
-        Date: "2023-07-11",
-      },
-      Rating: 4.2,
-    },
-  ];
-
-  // const [selectedLocation, setSelectedLocation] = useState("");
+  // page title
+  const pageTitle = "colleges | campusFinder";
+  usePageTitle(pageTitle);
+  useEffect(() => {
+    fetch("http://localhost:4080/api/colleges")
+      .then((response) => response.json())
+      .then((data) => setColleges(data))
+      .catch((error) => console.error("Error fetching colleges:", error));
+  }, []);
+  const [colleges, setColleges] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState("");
   const [selectedOwnership, setSelectedOwnership] = useState("");
   const [selectedFees, setSelectedFees] = useState("");
@@ -416,8 +36,12 @@ export default function College() {
   const [isSpecializationExpanded, setIsSpecializationExpanded] =
     useState(true);
   const [isExamExpanded, setIsExamExpanded] = useState(true);
-  const [filteredColleges, setFilteredColleges] = useState(colleges);
+  const [filteredColleges, setFilteredColleges] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  useEffect(() => {
+    setFilteredColleges(colleges.collegeList || []);
+  }, [colleges]);
+
   // const filterColleges = () => {
   //   let filtered = colleges;
 
@@ -443,27 +67,92 @@ export default function College() {
   //   filterColleges();
   // }, [selectedLocation]);
 
+  // useEffect(() => {
+  //   const filterColleges = () => {
+  //     let filtered = filteredColleges;
+
+  //     // Filter by location
+  //     if (selectedLocation.length > 0) {
+  //       filtered = filtered.filter(
+  //         (college) =>
+  //           college.location &&
+  //           college.location.city &&
+  //           college.location.city
+  //             .toLowerCase()
+  //             .includes(selectedLocation.toLowerCase())
+  //       );
+  //     }
+
+  //     // Filter by fees range
+  //     if (selectedFees.length > 0) {
+  //       filtered = filtered.filter((college) => {
+  //         if (college["Course Offered"]) {
+  //           const courseFees = parseInt(
+  //             college["Course Offered"][0].replace(/,/g, "")
+  //           );
+  //           const [lowerRange, upperRange] = selectedFees.split("-");
+
+  //           if (selectedFees === "1 Lakh") {
+  //             return courseFees < 100000;
+  //           } else if (selectedFees === "6 Lakh") {
+  //             return courseFees > 600000;
+  //           } else if (upperRange) {
+  //             return (
+  //               courseFees >= parseInt(lowerRange) * 100000 &&
+  //               courseFees <= parseInt(upperRange) * 100000
+  //             );
+  //           }
+  //         }
+  //         return false;
+  //       });
+  //     }
+
+  //     // Filter by ownership
+  //     if (selectedOwnership.length > 0) {
+  //       filtered = filtered.filter(
+  //         (college) =>
+  //           college.Ownership &&
+  //           college.Ownership.toLowerCase() === selectedOwnership.toLowerCase()
+  //       );
+  //     }
+
+  //     // Filter by search query
+  //     if (searchQuery.length > 0) {
+  //       filtered = filtered.filter((college) =>
+  //         college.name.toLowerCase().includes(searchQuery.toLowerCase())
+  //       );
+  //     }
+
+  //     setFilteredColleges(filtered);
+  //   };
+
+  //   filterColleges(); // Initial filter when the dependencies change
+  // }, [
+  //   filteredColleges,
+  //   selectedLocation,
+  //   selectedFees,
+  //   selectedOwnership,
+  //   searchQuery,
+  // ]);
+
   const filterColleges = () => {
-    let filtered = colleges;
+    let filtered = colleges.collegeList || [];
 
     // Filter by location
-    if (selectedLocation.length > 0) {
+    if (selectedLocation) {
       filtered = filtered.filter(
         (college) =>
-          college.Location &&
-          college.Location.toLowerCase().includes(
-            selectedLocation.toLowerCase()
-          )
+          college.location &&
+          college.location.city &&
+          college.location.city.toLowerCase() === selectedLocation.toLowerCase()
       );
     }
 
     // Filter by fees range
     if (selectedFees.length > 0) {
       filtered = filtered.filter((college) => {
-        if (college["Course Offered"]) {
-          const courseFees = parseInt(
-            college["Course Offered"][0].replace(/,/g, "")
-          );
+        if (college) {
+          const courseFees = college.fees.BE;
           const [lowerRange, upperRange] = selectedFees.split("-");
 
           if (selectedFees === "1 Lakh") {
@@ -493,7 +182,7 @@ export default function College() {
     // Filter by search query
     if (searchQuery.length > 0) {
       filtered = filtered.filter((college) =>
-        college.Name.toLowerCase().includes(searchQuery.toLowerCase())
+        college.name.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
 
@@ -517,6 +206,7 @@ export default function College() {
 
   useEffect(() => {
     filterColleges();
+    // eslint-disable-next-line
   }, [selectedLocation, selectedFees, selectedOwnership]);
 
   const handleOwnershipChange = (event) => {
@@ -589,7 +279,9 @@ export default function College() {
       selectedFilters.push(
         <span
           className="selected-option"
-          onClick={() => setSelectedLocation("")}
+          onClick={() => {
+            setSelectedLocation("");
+          }}
           key="location"
         >
           {selectedLocation}
@@ -655,6 +347,7 @@ export default function College() {
     setIsFeesExpanded(true);
     setIsSpecializationExpanded(true);
     setIsExamExpanded(true);
+    setFilteredColleges(colleges.collegeList || []);
   };
 
   return (
@@ -735,6 +428,7 @@ export default function College() {
                             id="private"
                             name="ownership"
                             value="Private"
+                            onClick={filterColleges}
                             checked={selectedOwnership === "Private"}
                             onChange={handleOwnershipChange}
                           />
@@ -1092,26 +786,28 @@ export default function College() {
                     </div>
                   </div>
                   <div className="image">
-                    <img
-                      src="https://images.shiksha.com/mediadata/images/1605086820phpSFQlAR.jpg"
-                      alt="college_logo"
-                    />
+                    <img src={college.images.logo_img} alt="college_logo" />
                   </div>
                   <div className="collge-info">
-                    <div className="collge-name">{college.Name}</div>
+                    <Link to={`/colleges/${college.name}`}>
+                      <div className="collge-name">{college.name}</div>
+                    </Link>
+
                     <div className="info-two">
                       <div className="locations">
                         <div className="img">
                           <img src={Location} alt="location" />
                         </div>
-                        <div className="address">{college.Location}</div>
+                        <div className="address">
+                          {college.location && college.location.city}
+                        </div>
                       </div>
                       <div className="verticalline">|</div>
                       <div className="rating">
-                        <div className="rate">{college.Rating}</div>
+                        <div className="rate">{college.ratings}</div>
                         <div className="star-rating">
                           {Array.from(
-                            { length: Math.floor(college.Rating) },
+                            { length: Math.floor(college.ratings) },
                             (_, i) => (
                               <span className="star" key={i}></span>
                             )
@@ -1120,24 +816,28 @@ export default function College() {
                       </div>
                       <div className="verticalline">|</div>
                       <div className="college-fees">
-                        <span>Fees:</span> ₹ {college["Course Offered"][0]}
+                        <span>Fees:</span> ₹ {college.fees.BE}
                       </div>
                     </div>
                     <div className="info-three">
                       <div className="salary">
-                        <span>Salary:</span> ₹ {college.Salary}
+                        <span>Salary:</span> ₹ {college.package}
                       </div>
                     </div>
                     <div className="info-four">
-                      <div className="admission">Admission</div>
+                      <div className="admission">
+                        <Link to={`/colleges/${college.name}`}>Admission</Link>
+                      </div>
                       <div className="dot">
                         <img src={Dot} alt="dot" />
                       </div>
-                      <div className="coursesandfees">Courses & Fees</div>
+                      <Link to={`/colleges/${college.name}`}>
+                        Courses & Fees
+                      </Link>
                       <div className="dot">
                         <img src={Dot} alt="dot" />
                       </div>
-                      <div className="placement">Placement</div>
+                      <Link to={`/colleges/${college.name}`}>Placement</Link>
                     </div>
                   </div>
                 </div>
